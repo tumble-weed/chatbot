@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<style>
+    form{
+        text-align: center;
+        transition: opacity 0.6s ease-out;
+      }
+      
+      img{
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .show{
+        display: block;
+      }
+      
+      .fade-out{
+        opacity: 0;
+      }
+</style>
+<head>
+    <title>test Q/A</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color:black">
+<div id="maintext" style="position:absolute; margin:auto; width:700px; height:200px; text-align:center; top:0; bottom: 0; left: 0; right: 0;">  
+    <h4 id="headng" class="text-light mb-5">TYPE YOUR QUESTION HERE</h4>
+    <form method=post id="myform">
+        <p class="text-light">
+            <input type="text" name="question"/>
+            <input type="submit" value=Ask>
+        </p>
+    </form>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif" id="spinner" class="hide">
+    <p id="result" class='text-light'> Result: {{ result["result"]}}</p>
+<script>
+    const form = document.getElementById('myform');
+    const spinner = document.getElementById('spinner');
+    const headng = document.getElementById('headng');
+    const result = document.getElementById('result');
+    form.addEventListener('submit', (e) => {
+        result.classList.toggle('fade-out');
+        headng.classList.toggle('fade-out');
+        form.classList.toggle('fade-out');
+        spinner.classList.toggle('show');
+    });
+</script>
+</div>
+</body>
+</html>
